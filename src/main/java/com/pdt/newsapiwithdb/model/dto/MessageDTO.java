@@ -3,6 +3,7 @@ package com.pdt.newsapiwithdb.model.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +17,7 @@ public class MessageDTO {
     private String description;
     private String url;
     private String urlToImage;
-    private LocalDate publishedAt;
+    private LocalDateTime publishedAt;
     private String content;
 
 }

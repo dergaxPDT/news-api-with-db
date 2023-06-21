@@ -11,5 +11,6 @@ import org.mapstruct.factory.Mappers;
 public interface MessageMapper {
     MessageMapper MAPPER = Mappers.getMapper( MessageMapper.class );
 
+    @Mapping(target = "source.id", ignore = true)
     Message toEntity(MessageDTO dto);
 }

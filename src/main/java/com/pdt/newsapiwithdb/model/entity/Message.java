@@ -9,6 +9,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @ToString
+@Setter
 public class Message {
     @Id
     @GeneratedValue
@@ -29,10 +31,12 @@ public class Message {
     private Source source;
     private String author;
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String url;
     private String urlToImage;
-    private LocalDate publishedAt;
+    private LocalDateTime publishedAt;
+    @Column(columnDefinition = "TEXT")
     private String content;
 
 }

@@ -1,11 +1,10 @@
 package com.pdt.newsapiwithdb.service;
 
-import com.pdt.newsapiwithdb.MessageRepository;
+import com.pdt.newsapiwithdb.repository.MessageRepository;
 import com.pdt.newsapiwithdb.model.dto.MessageDTO;
 import com.pdt.newsapiwithdb.model.dto.NewsApiModelDTO;
 import com.pdt.newsapiwithdb.model.dto.SourceDTO;
 import com.pdt.newsapiwithdb.model.entity.Message;
-import com.pdt.newsapiwithdb.model.entity.Source;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

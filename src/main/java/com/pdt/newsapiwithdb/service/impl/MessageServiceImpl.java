@@ -1,15 +1,15 @@
 package com.pdt.newsapiwithdb.service.impl;
 
-import com.pdt.newsapiwithdb.MessageRepository;
+import com.pdt.newsapiwithdb.model.entity.Message;
+import com.pdt.newsapiwithdb.repository.MessageRepository;
 import com.pdt.newsapiwithdb.mapper.MessageMapper;
 import com.pdt.newsapiwithdb.model.dto.MessageDTO;
-import com.pdt.newsapiwithdb.model.dto.NewsApiModelDTO;
 import com.pdt.newsapiwithdb.service.MessageService;
 import com.pdt.newsapiwithdb.service.NewsApiService;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
+
     private final NewsApiService newsApiService;
 
     @Autowired
@@ -30,5 +31,10 @@ public class MessageServiceImpl implements MessageService {
         List<MessageDTO> listDTO = newsApiService.getNews().getArticles();
         listDTO.forEach(dto -> messageRepository.save(MessageMapper.MAPPER.toEntity(dto)));
         return listDTO;
+    }
+
+    @Override
+    public List<Message> getArticles(int offset, int limit) {
+        return messageRepository.findAllWithLimitAndOffset(offset, limit);
     }
 }
