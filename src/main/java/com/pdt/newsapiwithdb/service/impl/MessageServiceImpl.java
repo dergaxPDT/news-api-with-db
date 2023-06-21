@@ -27,8 +27,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<MessageDTO> getNewsAndSave() {
-        List<MessageDTO> listDTO = newsApiService.getNews().getArticles();
+    public List<MessageDTO> getNewsAndSave(String query, String sortBy) {
+        List<MessageDTO> listDTO = newsApiService.getNews(query, sortBy).getArticles();
         listDTO.forEach(dto -> messageRepository.save(MessageMapper.MAPPER.toEntity(dto)));
         return listDTO;
     }

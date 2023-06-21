@@ -15,7 +15,11 @@ public class MessageRepositoryImpl implements CustomMessageRepository  {
 
     @Override
     public List<Message> findAllWithLimitAndOffset(int offset, int limit) {
-        return entityManager.createQuery("SELECT m FROM Message m ORDER BY m.publishedAt DESC",
-                Message.class).setMaxResults(limit).setFirstResult(offset).getResultList();
+        return entityManager
+                .createQuery("SELECT m FROM Message m ORDER BY m.publishedAt DESC",
+                Message.class)
+                .setMaxResults(limit)
+                .setFirstResult(offset)
+                .getResultList();
     }
 }

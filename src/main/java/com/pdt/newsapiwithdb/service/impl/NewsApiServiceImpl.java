@@ -28,11 +28,11 @@ public class NewsApiServiceImpl implements NewsApiService {
     private String apiKey;
 
     @Override
-    public NewsApiModelDTO getNews() {
+    public NewsApiModelDTO getNews(String query, String sortBy) {
         String resourceUrl = UriComponentsBuilder
                 .fromHttpUrl(url)
-                .queryParam("q", "apple")
-                .queryParam("sortBy", "popularity")
+                .queryParam("q", query)
+                .queryParam("sortBy", sortBy)
                 .queryParam("ApiKey", apiKey)
                 .build()
                 .encode()

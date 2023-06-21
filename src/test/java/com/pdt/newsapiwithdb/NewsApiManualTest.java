@@ -17,7 +17,7 @@ class NewsApiManualTest {
     @Test
     @Disabled("Direct api to API NEWS")
     void getMessagesDirectFromApi(){
-        NewsApiModelDTO dto = newsApiServiceImpl.getNews();
+        NewsApiModelDTO dto = newsApiServiceImpl.getNews("query", "sortBy");
         Assertions.assertEquals(59237, dto.getTotalResults());
     }
 }

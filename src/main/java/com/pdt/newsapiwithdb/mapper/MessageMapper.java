@@ -13,4 +13,7 @@ public interface MessageMapper {
 
     @Mapping(target = "source.id", ignore = true)
     Message toEntity(MessageDTO dto);
+
+    @Mapping(target = "source.id", ignore = true)
+    MessageDTO toDto(Message message);
 }
