@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class MessageRepositoryImpl implements CustomMessageRepository  {
+public class CustomMessageRepositoryImpl implements CustomMessageRepository  {
 
     @PersistenceContext
     private EntityManager entityManager;
