@@ -29,7 +29,7 @@ public class MessageController {
     }
 
     @GetMapping
-    @Operation(description = "list of articles.")
+    @Operation(description = "list of articles")
     List<MessageDTO> getArticles(@RequestParam("OFFSET") int offset, @RequestParam("LIMIT") int limit) {
         return messageService.getArticles(offset, limit)
                 .stream()

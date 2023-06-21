@@ -1,7 +1,6 @@
 package com.pdt.newsapiwithdb.repository;
 
 import com.pdt.newsapiwithdb.model.entity.Message;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 

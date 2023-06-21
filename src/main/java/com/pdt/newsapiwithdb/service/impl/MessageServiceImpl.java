@@ -6,8 +6,6 @@ import com.pdt.newsapiwithdb.mapper.MessageMapper;
 import com.pdt.newsapiwithdb.model.dto.MessageDTO;
 import com.pdt.newsapiwithdb.service.MessageService;
 import com.pdt.newsapiwithdb.service.NewsApiService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
