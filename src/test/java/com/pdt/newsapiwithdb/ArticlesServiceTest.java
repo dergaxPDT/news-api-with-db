@@ -1,11 +1,11 @@
 package com.pdt.newsapiwithdb;
 
-import com.pdt.newsapiwithdb.repository.MessageRepository;
-import com.pdt.newsapiwithdb.model.dto.MessageDTO;
+import com.pdt.newsapiwithdb.model.dto.ArticlesDTO;
+import com.pdt.newsapiwithdb.model.entity.Articles;
+import com.pdt.newsapiwithdb.repository.ArticlesRepository;
 import com.pdt.newsapiwithdb.model.dto.NewsApiModelDTO;
 import com.pdt.newsapiwithdb.model.dto.SourceDTO;
-import com.pdt.newsapiwithdb.model.entity.Message;
-import com.pdt.newsapiwithdb.service.MessageService;
+import com.pdt.newsapiwithdb.service.ArticlesService;
 import com.pdt.newsapiwithdb.service.NewsApiService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,13 +23,13 @@ import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
 @DisplayName("MESSAGE SERVICE TEST")
-class MessageServiceTest {
+class ArticlesServiceTest {
 
     @Autowired
-    private MessageService messageService;
+    private ArticlesService articlesService;
 
     @Autowired
-    private MessageRepository messageRepository;
+    private ArticlesRepository articlesRepository;
 
     @MockBean
     private NewsApiService newsApiService;
@@ -38,24 +38,24 @@ class MessageServiceTest {
     @DisplayName("should  get one message dto from mock and save it to db")
     void getNewsAndSave() {
         //given
-        MessageDTO messageDTO = getMessageDTO();
+        ArticlesDTO articlesDTO = getMessageDTO();
         Mockito.when(newsApiService.getNews(any(), any())).thenReturn(new NewsApiModelDTO("ok", 1, List.of(getMessageDTO())));
         //when
-        messageService.getNewsAndSave("query", "sortBy");
+        articlesService.getNewsAndSave("query", "sortBy");
         //then
-        Message message = messageRepository.findAll().get(0);
-        assertEquals(messageDTO.getSource().getName(), message.getSource().getName());
-        assertEquals(messageDTO.getAuthor(), message.getAuthor());
-        assertEquals(messageDTO.getTitle(), message.getTitle());
-        assertEquals(messageDTO.getDescription(), message.getDescription());
-        assertEquals(messageDTO.getUrl(), message.getUrl());
-        assertEquals(messageDTO.getUrlToImage(), message.getUrlToImage());
-        assertEquals(messageDTO.getPublishedAt(), message.getPublishedAt());
-        assertEquals(messageDTO.getContent(), message.getContent());
+        Articles articles = articlesRepository.findAll().get(0);
+        assertEquals(articlesDTO.getSource().getName(), articles.getSource().getName());
+        assertEquals(articlesDTO.getAuthor(), articles.getAuthor());
+        assertEquals(articlesDTO.getTitle(), articles.getTitle());
+        assertEquals(articlesDTO.getDescription(), articles.getDescription());
+        assertEquals(articlesDTO.getUrl(), articles.getUrl());
+        assertEquals(articlesDTO.getUrlToImage(), articles.getUrlToImage());
+        assertEquals(articlesDTO.getPublishedAt(), articles.getPublishedAt());
+        assertEquals(articlesDTO.getContent(), articles.getContent());
     }
 
-    private MessageDTO getMessageDTO() {
-        return MessageDTO
+    private ArticlesDTO getMessageDTO() {
+        return ArticlesDTO
                 .builder()
                 .source(
                         SourceDTO.builder()

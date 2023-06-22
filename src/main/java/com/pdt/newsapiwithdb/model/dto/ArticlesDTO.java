@@ -2,14 +2,13 @@ package com.pdt.newsapiwithdb.model.dto;
 
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
-public class MessageDTO {
+public class ArticlesDTO {
 
     private SourceDTO source;
     private String author;

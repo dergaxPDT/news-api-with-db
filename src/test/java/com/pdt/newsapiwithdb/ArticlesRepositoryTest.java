@@ -1,8 +1,8 @@
 package com.pdt.newsapiwithdb;
 
-import com.pdt.newsapiwithdb.model.entity.Message;
+import com.pdt.newsapiwithdb.model.entity.Articles;
 import com.pdt.newsapiwithdb.model.entity.Source;
-import com.pdt.newsapiwithdb.repository.MessageRepository;
+import com.pdt.newsapiwithdb.repository.ArticlesRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,29 +15,29 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class MessageRepositoryTest {
+class ArticlesRepositoryTest {
 
     @Autowired
-    private MessageRepository messageRepository;
+    private ArticlesRepository articlesRepository;
 
     @Test
     void shouldSaveInDbMessage() {
-        messageRepository.save(getMessageEx());
-        assertEquals(1, messageRepository.findAll().size());
+        articlesRepository.save(getMessageEx());
+        assertEquals(1, articlesRepository.findAll().size());
     }
 
     @Test
     void shouldSaveMessagesAndReturn() {
-        List<Message> listExpected = new ArrayList<>();
+        List<Articles> listExpected = new ArrayList<>();
         for (int i = 20; i > 0; i--) {
-            Message message = getMessageEx();
-            message.setPublishedAt(LocalDateTime.now().plusMinutes(i).truncatedTo(ChronoUnit.MILLIS));
-            messageRepository.save(message);
-            listExpected.add(message);
+            Articles articles = getMessageEx();
+            articles.setPublishedAt(LocalDateTime.now().plusMinutes(i).truncatedTo(ChronoUnit.MILLIS));
+            articlesRepository.save(articles);
+            listExpected.add(articles);
         }
         int limit = 7;
         int offset = 7;
-        List<Message> listActual = messageRepository.findAllWithLimitAndOffset(offset, limit);
+        List<Articles> listActual = articlesRepository.findAllWithLimitAndOffset(offset, limit);
         int size = 7;
         assertEquals(size, listActual.size());
         for (int i = 0; i < limit; i++) {
@@ -45,8 +45,8 @@ class MessageRepositoryTest {
         }
     }
 
-    private Message getMessageEx() {
-        return Message
+    private Articles getMessageEx() {
+        return Articles
                 .builder()
                 .source(
                         Source.builder()

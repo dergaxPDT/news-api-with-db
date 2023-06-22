@@ -28,5 +28,5 @@ public class Source {
     @OneToOne
     @Fetch(FetchMode.JOIN)
     @Cascade(CascadeType.ALL)
-    private Message message;
+    private Articles message;
 }

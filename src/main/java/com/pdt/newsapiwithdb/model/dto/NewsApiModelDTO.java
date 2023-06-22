@@ -12,5 +12,5 @@ import java.util.List;
 public class NewsApiModelDTO {
     private String status;
     private int totalResults;
-    private List<MessageDTO> articles;
+    private List<ArticlesDTO> articles;
 }
