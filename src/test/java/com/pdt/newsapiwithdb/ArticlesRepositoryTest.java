@@ -31,6 +31,7 @@ class ArticlesRepositoryTest {
         List<Articles> listExpected = new ArrayList<>();
         for (int i = 20; i > 0; i--) {
             Articles articles = getMessageEx();
+            articles.setTitle(articles.getTitle() + i);
             articles.setPublishedAt(LocalDateTime.now().plusMinutes(i).truncatedTo(ChronoUnit.MILLIS));
             articlesRepository.save(articles);
             listExpected.add(articles);
@@ -41,7 +42,7 @@ class ArticlesRepositoryTest {
         int size = 7;
         assertEquals(size, listActual.size());
         for (int i = 0; i < limit; i++) {
-            assertEquals(listExpected.get(i+offset).getPublishedAt(), listActual.get(i).getPublishedAt());
+            assertEquals(listExpected.get(i + offset).getPublishedAt(), listActual.get(i).getPublishedAt());
         }
     }
 
