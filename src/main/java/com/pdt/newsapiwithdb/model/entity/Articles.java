@@ -2,12 +2,11 @@ package com.pdt.newsapiwithdb.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,15 +18,15 @@ import java.time.LocalDateTime;
 public class Articles {
 
     @Id
-    private String title;
-
+    @GeneratedValue
+    @UuidGenerator
+    private UUID id;
     @OneToOne
     @Fetch(FetchMode.JOIN)
     @Cascade(CascadeType.ALL)
     private Source source;
-
+    private String title;
     private String author;
-
     @Column(columnDefinition = "TEXT")
     private String description;
     private String url;

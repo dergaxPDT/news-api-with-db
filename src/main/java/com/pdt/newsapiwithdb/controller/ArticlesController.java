@@ -24,13 +24,13 @@ public class ArticlesController {
 
     @PostMapping
     @Operation(description = "downloads articles from an external API and saves them to the database. Params: query (ex. apple), sortBy(ex. popularity)")
-    List<ArticlesDTO> getArticlesAndSave(@RequestParam String query, @RequestParam String sortBy) {
+    public List<ArticlesDTO> getArticlesAndSave(@RequestParam String query, @RequestParam String sortBy) {
         return articlesService.getNewsAndSave(query, sortBy);
     }
 
     @GetMapping
     @Operation(description = "list of articles")
-    List<ArticlesDTO> getArticles(@RequestParam("OFFSET") int offset, @RequestParam("LIMIT") int limit) {
+    public List<ArticlesDTO> getArticles(@RequestParam("OFFSET") int offset, @RequestParam("LIMIT") int limit) {
         return articlesService.getArticles(offset, limit)
                 .stream()
                 .map(ArticlesMapper.MAPPER::toDto)

@@ -3,11 +3,9 @@ package com.pdt.newsapiwithdb.repository;
 import com.pdt.newsapiwithdb.model.entity.Articles;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public class CustomArticlesRepositoryImpl implements CustomArticlesRepository {
 
     @PersistenceContext
